@@ -1,0 +1,12 @@
+body {
+    background-image: url('../images/canadian-dollar.png');
+    /* font-family: 'Candara'; */
+}
+
+.content-wrapper {
+    background-color: azure;
+    margin: 100px 100px 100px;
+    text-align: center;
+    height: 500px;
+}
+
