@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    // variable to set timer to 30
-    var countDown = 30;
+    // variable to set timer to 60
+    var countDown = 60;
     //  Variable that will hold our interval ID when we execute the "run" function
     var intervalId;
     // questions, answer choices, and correct answer 
@@ -66,10 +66,10 @@ $(document).ready(function () {
 
     // function that brings about the start button
     function renderStart() {
-        $("#start").append("<button>" + "Start" + "</button>");
+        $("#start").append("<button class=button>" + "Start" + "</button>");
     }
     function renderDoneBtn() {
-        $("#doneBtn").append("<button>" + "Done" + "</button>");
+        $("#doneBtn").append("<button class=button>" + "Done" + "</button>");
     }
 
     // calling renderStart function 
