@@ -155,7 +155,7 @@ $(document).ready(function () {
         // function to loop through questions array and display to screen
         questions.forEach(function (obj, idx) {
             // grab questions
-            myQuestion = myQuestion + "<p class='bold'>" + obj.question + "</p>";
+            myQuestion = myQuestion + "<p class='quest'>" + obj.question + "</p>";
             // grab choices
             obj.choices.forEach(function (choice) {
                 myQuestion = myQuestion + "<input type='radio' name = " + idx + " value= " + choice + ">" + " " + choice + "<br />";
