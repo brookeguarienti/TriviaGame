@@ -132,6 +132,7 @@ $(document).ready(function () {
             console.log("unansw " + unanswered);
             console.log("index: " + i);
             console.log("checked: " + checked);
+            $("#myForm").hide();
         }
         // create div variable to grab the start tag, and replace with checkAnswers results
         var div = $("#start").html(`<h3>All Done!</h3>`);
