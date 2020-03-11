@@ -4,9 +4,13 @@ body {
 }
 
 .content-wrapper {
-    background-color: azure;
-    margin: 100px 100px 100px;
+    /* background-color: azure; */
+    margin: 100px 100px auto;
     text-align: center;
     height: 500px;
 }
+
+/* p.bold {
+    margin: 50px 50px 50x;
+} */
 

@@ -1,20 +1,67 @@
 $(document).ready(function () {
-    // function to start my game
-    // function to render my start button
-    // once the start button is clicked, start timer and render questions
-    // make each answer option clickable, but only one per question
-    // score function that counts up correct and incorrect answers
-
-    // variable to hold number of correct answers
-    var correctAnswers = 0;
-    // variable to hold number of incorrect answers
-    var incorrectAnswers = 0;
-    // variable to hold unanswered questions
-    var unanswered = 0;
     // variable to set timer to 30
     var countDown = 30;
     //  Variable that will hold our interval ID when we execute the "run" function
     var intervalId;
+    // questions, answer choices, and correct answer 
+    var questions = [
+        {
+            question: "What is Jess' last name?",
+            choices: ["Deschanel", "Day", "Miller"],
+            correctAnswer: "Day",
+        },
+        {
+            question: "In the second episode of season four, Schmidt coached Jess on how to use what dating app?",
+            choices: ["Dice", "Bumble", "Swipe"],
+            correctAnswer: "Dice",
+        },
+        {
+            question: "In the season 4 episode Julie Berkman is My Sister, the guys try to help Schmidt land an account marketing what household product?",
+            choices: ["Paper towels", "Soap", "Sponges"],
+            correctAnswer: "Sponges",
+        },
+        {
+            question: "What musical instrument does Jess play?",
+            choices: ["Handbells", "Ukulele", "Harmonica"],
+            correctAnswer: "Handbells",
+        },
+        {
+            question: "In the series pilot, Jess moved in with three men. Which roommate left after the pilot and was replaced by Winston?",
+            choices: ["Jerry", "CeCe", "Coach"],
+            correctAnswer: "Coach",
+        },
+        {
+            question: "Where does Jess find the guy's roommate ad?",
+            choices: ["Facebook Marketplace", "Craigslist", "Newspaper"],
+            correctAnswer: "Craigslist",
+        },
+        {
+            question: "In what state did Jess grow up?",
+            choices: ["California", "Orgeon", "Kansas"],
+            correctAnswer: "Orgeon",
+        },
+        {
+            question: "Who played secretary when a landline phone was installed in the loft?",
+            choices: ["Winston", "Schmidt", "Nick"],
+            correctAnswer: "Nick",
+        },
+        {
+            question: " In season two, Jess dated a doctor played by David Walton. What was his name?",
+            choices: ["Sam", "Robby", "Spencer"],
+            correctAnswer: "Sam",
+        },
+        {
+            question: "What does Jess do for a living?",
+            choices: ["Meteorologist", "Teacher", "Nurse"],
+            correctAnswer: "Teacher",
+        },
+        {
+            question: "What is Schmidt deathly afraid of?",
+            choices: ["Mice", "Dogs", "Spiders"],
+            correctAnswer: "Spiders",
+        },
+    ]
+
 
 
     // function that brings about the start button
@@ -24,7 +71,6 @@ $(document).ready(function () {
 
     // calling renderStart function 
     renderStart();
-    
 
     // function to start the timer 
     function runClock() {
@@ -43,14 +89,55 @@ $(document).ready(function () {
         if (countDown === 0) {
             //  then, run the stop function.
             stop();
-            //  Alert the user that time is up.
-            // alert("Time Up!");
-            // **** run function to bring about "All done! and correct/incorrect answers"
-            var div = $("#start").html(`<h3>All Done!</h3>`);
-            div.append("<h5>" + "Correct Answers: " + correctAnswers + "</h5>");
-            div.append("<h5>" + "Incorrect Answers: " + incorrectAnswers + "</h5>");
-            div.append("<h5>" + "Unanswered: " + unanswered + "</h5>");
+            // check the answers
+            checkAnswers();
         }
+    }
+    // function to check if answers are correct, incorrect, or unanswered
+    function checkAnswers() {
+        // stop();
+
+        // variables to hold correct, incorrect, and unaswered questions
+        var correctAnswers = 0;
+        var unanswered = 0;
+        var incorrectAnswers = 0;
+
+        // loop through questions array 
+        for (var i = 0; i < questions.length; i++) {
+
+            // use :checked and val() method to check answer selected and set to variable checked
+            var checked = $("input[name =" + i + "]:checked").val();
+
+            // if user answer is equal to correct answer in questions array
+            if (checked === questions[i].correctAnswer) {
+
+                // then increase correctAnswers variable
+                correctAnswers++;
+
+                // then check if checked is "undefined"
+            } else if (typeof checked == "undefined") {
+                // then increase unanswered variable
+                unanswered++;
+
+                // last, check all else 
+            } else {
+
+                // and increase incorrectAnswers variable
+                incorrectAnswers++;
+            }
+            // console.log variables to show what each variable is returning
+            console.log("correctanswer: " + questions[i].correctAnswer);
+            console.log("correctA " + correctAnswers);
+            console.log("incorrectA " + incorrectAnswers);
+            console.log("unansw " + unanswered);
+            console.log("index: " + i);
+            console.log("checked: " + checked);
+        }
+        // create div variable to grab the start tag, and replace with checkAnswers results
+        var div = $("#start").html(`<h3>All Done!</h3>`);
+        div.append("<h5>" + "Correct Answers: " + correctAnswers + "</h5>");
+        div.append("<h5>" + "Incorrect Answers: " + incorrectAnswers + "</h5>");
+        div.append("<h5>" + "Unanswered: " + unanswered + "</h5>");
     }
 
     // function to stop the timer
@@ -58,18 +145,27 @@ $(document).ready(function () {
         // clears the intervalId
         clearInterval(intervalId);
     }
-
-    // function to render questions to the screen 
-    // function renderQuestions() {
-        
-    // }
-
     // This function handles events where the start button is clicked
     $("#start").on("click", function (event) {
         // Once the button is clicked, start timer
         runClock();
-        // Once the button is clicked, render questions
+        // variable to hold questions and options rendered
+        myQuestion = "";
+
+        // function to loop through questions array and display to screen
+        questions.forEach(function (obj, idx) {
+            // grab questions
+            myQuestion = myQuestion + "<p class='bold'>" + obj.question + "</p>";
+            // grab choices
+            obj.choices.forEach(function (choice) {
+                myQuestion = myQuestion + "<input type='radio' name = " + idx + " value= " + choice + ">" + choice + "<br />";
+            })
+        })
+        // appends myQuestion variable to screen
+        $("#myForm").append(myQuestion);
 
     });
 
-})
+});
+
+
