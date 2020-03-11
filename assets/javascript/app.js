@@ -158,7 +158,7 @@ $(document).ready(function () {
             myQuestion = myQuestion + "<p class='bold'>" + obj.question + "</p>";
             // grab choices
             obj.choices.forEach(function (choice) {
-                myQuestion = myQuestion + "<input type='radio' name = " + idx + " value= " + choice + ">" + choice + "<br />";
+                myQuestion = myQuestion + "<input type='radio' name = " + idx + " value= " + choice + ">" + " " + choice + "<br />";
             })
         })
         // appends myQuestion variable to screen
