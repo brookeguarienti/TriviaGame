@@ -68,6 +68,9 @@ $(document).ready(function () {
     function renderStart() {
         $("#start").append("<button>" + "Start" + "</button>");
     }
+    function renderDoneBtn() {
+        $("#doneBtn").append("<button>" + "Done" + "</button>");
+    }
 
     // calling renderStart function 
     renderStart();
@@ -164,6 +167,14 @@ $(document).ready(function () {
         })
         // appends myQuestion variable to screen
         $("#myForm").append(myQuestion);
+        //calling renderDontBtn
+        renderDoneBtn();
+    });
+
+    $("#doneBtn").on("click", function (event) {
+        stop();
+        checkAnswers();
+        $("#doneBtn").hide();
 
     });
 
