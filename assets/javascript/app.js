@@ -60,6 +60,26 @@ $(document).ready(function () {
             choices: ["Mice", "Dogs", "Spiders"],
             correctAnswer: "Spiders",
         },
+        {
+            question: "What is the name of Winston's cat?",
+            choices: ["Furguson", "Furmeister", "Furgal"],
+            correctAnswer: "Furguson",
+        },
+        {
+            question: "Who did Jess break up with before moving in at the loft?",
+            choices: ["Sam", "Spencer", "Robby"],
+            correctAnswer: "Spencer",
+        },
+        {
+            question: "What is Winston's surname?",
+            choices: ["Pope", "Reverand", "Bishop"],
+            correctAnswer: "Bishop",
+        },
+        {
+            question: "What did Nick study at college?",
+            choices: ["Law", "Math", "History"],
+            correctAnswer: "Law",
+        },
     ]
 
 
@@ -68,6 +88,7 @@ $(document).ready(function () {
     function renderStart() {
         $("#start").append("<button class=button>" + "Start" + "</button>");
     }
+    //function that brings about the done button
     function renderDoneBtn() {
         $("#doneBtn").append("<button class=button>" + "Done" + "</button>");
     }
@@ -86,7 +107,7 @@ $(document).ready(function () {
         //  Decrease number by one.
         countDown--;
         //  Show the number in the #timer tag.
-        $("#start").html("<h4>" + "Time Remaining: " + countDown + "</h4>");
+        $("#timer").html("<h4>" + "Time Remaining: " + countDown + "</h4>");
 
         //  if countdown hits zero...
         if (countDown === 0) {
@@ -94,6 +115,8 @@ $(document).ready(function () {
             stop();
             // check the answers
             checkAnswers();
+            // hide done button
+            $("#doneBtn").hide();
         }
     }
     // function to check if answers are correct, incorrect, or unanswered
@@ -138,7 +161,7 @@ $(document).ready(function () {
             $("#myForm").hide();
         }
         // create div variable to grab the start tag, and replace with checkAnswers results
-        var div = $("#start").html(`<h3>All Done!</h3>`);
+        var div = $("#timer").html(`<h3>All Done!</h3>`);
         div.append("<h5>" + "Correct Answers: " + correctAnswers + "</h5>");
         div.append("<h5>" + "Incorrect Answers: " + incorrectAnswers + "</h5>");
         div.append("<h5>" + "Unanswered: " + unanswered + "</h5>");
@@ -151,8 +174,11 @@ $(document).ready(function () {
     }
     // This function handles events where the start button is clicked
     $("#start").on("click", function (event) {
+        $("#start").hide();
         // Once the button is clicked, start timer
         runClock();
+        // call the decrement function to start the timer countdown and display
+        decrement();
         // variable to hold questions and options rendered
         myQuestion = "";
 
@@ -162,15 +188,16 @@ $(document).ready(function () {
             myQuestion = myQuestion + "<p class='quest'>" + obj.question + "</p>";
             // grab choices
             obj.choices.forEach(function (choice) {
-                myQuestion = myQuestion + "<input type='radio' name = " + idx + " value= " + choice + ">" + " " + choice + "<br />";
+                myQuestion = myQuestion + "<input type='radio' class='radio-inline' name = " + idx + " value= " + choice + ">" + " " + choice + "<br />";
             })
+            
         })
         // appends myQuestion variable to screen
         $("#myForm").append(myQuestion);
         //calling renderDontBtn
         renderDoneBtn();
     });
-
+    // adds event listener for done button
     $("#doneBtn").on("click", function (event) {
         stop();
         checkAnswers();
@@ -178,6 +205,6 @@ $(document).ready(function () {
 
     });
 
-});
+}); 
 
 
