@@ -1,6 +1,9 @@
 ## TriviaGame
 This is a Trivia game that uses JavaScript for logic and jQuery to manipulate the html.
 
+## View the website
+https://brookeguarienti.github.io/TriviaGame/
+
 ## Goal
 The goal of this Trivia Game is to answer all questions correctly before time is up.
 
