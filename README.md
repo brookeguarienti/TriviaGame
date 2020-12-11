@@ -5,7 +5,7 @@ This is a Trivia game that uses JavaScript for logic and jQuery to manipulate th
 https://brookeguarienti.github.io/TriviaGame/
 
 ## The Game
-<img src= "/assets/images/NewGirlTriviaGame.gif">
+<img src= "/assets/images/New Girl Trivia Game.gif">
 
 ## Goal
 The goal of this Trivia Game is to answer all questions correctly before time is up.
