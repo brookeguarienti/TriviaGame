@@ -1,4 +1,4 @@
-## TriviaGame
+## Trivia Game
 This is a Trivia game that uses JavaScript for logic and jQuery to manipulate the html.
 
 ## View the website
